@@ -10,6 +10,10 @@ function Todo(props){
         setModalIsOpen(true);
     }
 
+    function closeModalHandler() {
+      setModalIsOpen(false);
+    }
+
     return (
         <div className='card'>
         <h2>{props.text}</h2>
@@ -20,9 +24,9 @@ function Todo(props){
           
           {/*{ modalIsOpen ? <Modal /> : null }*/}
           {/* Tip: Shorter way to write that condition */}
-          {modalIsOpen && <Modal />}
-          {modalIsOpen && <Backdrop />}          
-          
+          {modalIsOpen && (
+            <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler} />)}
+          {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}           
       </div>
     );
 }
